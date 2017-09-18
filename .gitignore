@@ -20,3 +20,9 @@
 
 # Ignore IDE settings
 .idea
+
+# ignore secure key files
+/config/application.yml
+
+# Ignore application configuration
+/config/application.yml

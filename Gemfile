@@ -36,6 +36,11 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem "clearance"
 # HTML preprocessing with Haml
 gem "haml"
+# secure cloud service key
+gem 'figaro'
+# use OAuth
+gem 'omniauth-facebook'
+gem 'omniauth'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
