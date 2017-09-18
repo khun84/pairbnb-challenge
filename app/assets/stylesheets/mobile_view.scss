@@ -1,0 +1,30 @@
+/*----- Mobile view -----*/
+@media screen and (max-width: 400px) {
+    .menu ul li {
+        font-size: 10px;
+    }
+}
+
+$hide_nav_link: 3,4;
+$hide_footer_link: 2,3;
+
+@media screen and (max-width: 400px) {
+    div.para-one, div.para-two {
+        width: 100%;
+    }
+
+    @each $link in $hide_nav_link {
+        ul :nth-child(#{$link}) {
+            display: none;
+        }
+
+    }
+
+    @each $link in $hide_footer_link {
+        #footer ul :nth-child(#{$link}) {
+            display: none;
+        }
+    }
+
+}
+

@@ -1,0 +1,14 @@
+%ul.nav.fixed-top
+    %li.nav-item
+        %a.nav-link.active{href:'#'} Home
+    - if current_user.nil?
+        %li.nav-item
+            %a.nav-link{href:'#signin-modal', 'data-toggle':'modal', 'data-target':'#signin-modal'} Sign In
+        %li.nav-item
+            %a.nav-link{href:'#'} Sign Up
+    %li.nav-item
+        %a.nav-link{href:'#'} About Us
+    - if current_user
+        %form#signout-form{action:'/sign_out', method:'post'}
+            = token_tag
+            %button.btn.btn-primary.float-right{role:'button', type:'submit'} Sign Out
