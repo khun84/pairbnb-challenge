@@ -1,0 +1,17 @@
+= form_for @user, url:@user, method: 'post' do |f|
+    = f.label :name, class:''
+    = f.text_field :name
+    %br
+    = f.label :name
+    = f.text_field :email
+    %br
+    = f.label :password
+    = f.text_field :password, type: 'password'
+    %br
+    = f.label :state
+    = f.text_field :state
+    %br
+    = f.label :country
+    = f.text_field :country
+    %br
+    = f.submit 'Submit'
