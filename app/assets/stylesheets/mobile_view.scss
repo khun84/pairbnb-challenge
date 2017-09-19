@@ -21,7 +21,7 @@ $hide_footer_link: 2,3;
     }
 
     @each $link in $hide_footer_link {
-        #footer ul :nth-child(#{$link}) {
+        #footer a :nth-child(#{$link}) {
             display: none;
         }
     }

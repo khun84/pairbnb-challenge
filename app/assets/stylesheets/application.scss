@@ -2,9 +2,14 @@
 @import 'mobile_view';
 @import "bootstrap_override";
 @import 'pagination';
+@import 'listings';
+
+html {
+    min-height: 100%;
+    position: relative;
+    }
 
 body {
-    padding: 0;
     margin: 0;
     background: linear-gradient(
                     rgba(0, 0, 0, 0.3),
@@ -18,35 +23,8 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.hero-header {
-    //text-align: center;
-    //height: 500px;
-    //padding-top: 10%;
-    //text-transform: uppercase;
-    //color: #fff;
-    //.main-text {
-    //    letter-spacing: 6px;
-    //    font-size: 70px;
-    //    margin-bottom: 20px;
-    //}
-    //.sub-text {
-    //    font-size: 30px;
-    //    letter-spacing: 4px;
-    //    font-weight: lighter;
-    //}
-}
-//
-//.container {
-//    margin: 20px;
-//    padding: 20px;
-//}
 
-/*----- Para -----*/
-//
-//.div-one {
-//    min-height: 400px;
-//    color: #fff;
-//}
+
 
 .para-one {
     color: white;
@@ -123,7 +101,7 @@ body {
 
 #footer {
     clear: both;
-    position: relative;
+    //position: relative;
     z-index: 10;
     height: 3em;
     margin-top: -3em;

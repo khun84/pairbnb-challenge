@@ -1,5 +1,5 @@
-body {
-    padding-top:100px;
+body > .container {
+    padding-top:60px;
 }
 
 ul.nav {
@@ -25,6 +25,23 @@ ul.nav li a:hover {
 .jumbotron button {
     text-align: center;
     min-width: 200px;
+}
+
+footer#footer {
+    position: absolute;
+    height:60px;
+    background-color: black;
+    bottom:0;
+    width:100%;
+
+    a {
+        color: white;
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: yellow;
+    }
 }
 
 //-----------------

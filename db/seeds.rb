@@ -21,9 +21,9 @@ csv = CSV.new(File.open(location_path), headers:true)
 
 csv.each do |row|
     location = Location.new
-    location.country = row["country"]
-    location.state = row["state"]
-    location.city = row["city"]
+    location.country = row["Country"]
+    location.state = row["State"]
+    location.city = row["City"]
     location.save
 end
 
