@@ -3,6 +3,7 @@ class User < ApplicationRecord
     validates :name, presence: true, length: {maximum: 50}
 
     has_many :authentications
+    has_many :listings
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
         user = self.create!(

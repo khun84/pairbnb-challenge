@@ -1,0 +1,22 @@
+.card-deck.listing-car-deck
+    .row.listing-pagination.mt-5
+        -# todo beautify the pagination later
+        .apple_pagination
+            = will_paginate @listings, previous_label: '&laquo;', next_label:'&raquo;'
+    .row.mt-sm-1.mb-sm-3
+        - @listings.each do |listing|
+            .col-md-4.px-0.my-sm-1
+                .card.rounded-0.mx-sm-1.mx-sm-1.border-0
+                    %img.card-img-top{:alt => listing.name, :src => image_url('listing_sample_cover.jpg')}/
+                    .card-body.py-sm-1
+                        %p.card-text.font-weight-bold.mb-sm-1
+                            = "RM#{listing.base_price.to_i} #{listing.name}"
+                        %p.card-text
+                            = "Accomodate #{listing.person_count} people"
+                    .card-footer.p-sm-1
+                        - class_hash = {"Y"=>"badge-dark", "N"=>"badge-secondary"}
+                        - smoke_badge = class_hash[listing.smoke]
+                        - pet_badge = class_hash[listing.pet]
+                        %span.badge.badge-pill.align-middle{class: smoke_badge} Smoke
+                        %span.badge.badge-pill.align-middle{class: pet_badge}
+                            Pet

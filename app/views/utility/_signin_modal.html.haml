@@ -1,20 +1,21 @@
-.modal.fade{"aria-hidden": "true", "aria-labelledby": "exampleModalLabel",
+.modal.fade{"aria-hidden"=> "true", "aria-labelledby"=> "exampleModalLabel",
  role: "dialog", tabindex: "-1", id:'signin-modal'}
     .modal-dialog{role: "document"}
         .modal-content
             .modal-header
                 %h5#exampleModalLabel.modal-title Sign In
-                %button.close{"aria-label": "Close", "data-dismiss": "modal", type: "button"}
-                    %span{"aria-hidden": "true"} ×
-            %form{action:'#', method:'post'}
+                %button.close{"aria-label"=> "Close", "data-dismiss"=> "modal", type: "button"}
+                    %span{"aria-hidden"=> "true"} ×
+
+            = form_for :session, url: sign_in_path do |f|
                 .modal-body
-                    = token_tag
                     .form-group
-                        %label.form-control-label{for: "email"} Email
-                        %input#email.form-control{type: "text", name:'email'}
+                    = f.label :email, class: 'form-control-label', for: 'email'
+                    = f.text_field :email, class:'form-control', type:'text', id:'email'
+
                     .form-group
-                        %label.form-control-label{for: "message-text"} Password
-                        %input#user-password.form-control{type:'password', name:'password'}
+                    = f.label :password, class: 'form-control-label', for: 'message-text'
+                    = f.password_field :password, class:'form-control', id:'user-password'
                 .modal-footer
-                    %button.btn.btn-primary{type: "button", type:'submit', role:'button'} Sign In
+                    = f.submit 'Sign in', class:'btn btn-primary', role:'button'
                     %a.btn.btn-primary{href:'/auth/facebook', role:'button'} Sign In with Facebook

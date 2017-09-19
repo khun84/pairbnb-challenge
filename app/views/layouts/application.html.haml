@@ -14,9 +14,12 @@
             = yield
 
         %div.pusher
-        = render 'utility/login_alert_modal'
+        -# some modals for user to interact with users
+        = render partial: 'utility/login_alert_modal'
         = render partial: 'utility/signin_modal'
+        = render partial: 'utility/signup_modal'
 
+        -# todo fix the position of the footer
         %div.footer{id:'footer'}
             %ul
                 %li About Us

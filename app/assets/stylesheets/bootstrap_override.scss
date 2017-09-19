@@ -1,6 +1,18 @@
-nav li a {
+body {
+    padding-top:100px;
+}
+
+ul.nav {
+    background-color: #ff6944;
+}
+
+ul.nav li a {
     color: white;
     text-decoration: none;
+}
+
+ul.nav li a:hover {
+    color: black;
 }
 
 .jumbotron {
