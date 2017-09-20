@@ -5,6 +5,8 @@ class User < ApplicationRecord
     has_many :authentications
     has_many :listings
 
+    enum role:[:customer, :moderator, :admin]
+
     def self.create_with_auth_and_hash(authentication, auth_hash)
         user = self.create!(
            name: auth_hash['info']['name'],
