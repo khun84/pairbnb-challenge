@@ -1,4 +1,13 @@
 class UsersController < Clearance::UsersController
+    before_action(only: [:show, :edit, :update, :destroy]) do
+        not_sign_in_redirect url: root_path, msg: 'Please sign in to perform this action'
+    end
+
+    before_action(only: [:edit, :update, :destroy]) do
+        resource_exist? url: listings_path, resource: Listing, resource_id: params[:id], msg: 'There is no such listing'
+        belongs_to_current_user? url: listing_path(params[:id]), resource: Listing, resource_id: params[:id], msg: "You can only edit your own listing"
+    end
+
     def new
         @user = User.new
         render "users/new"

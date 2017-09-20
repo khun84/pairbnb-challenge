@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-    before_action(only: [:create]) do
+    before_action(only: [:create, :show, :edit, :update, :destroy]) do
         not_sign_in_redirect url: listings_path, msg: 'Please sign in to perform this action'
     end
 
