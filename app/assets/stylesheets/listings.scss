@@ -4,6 +4,26 @@
 
 form#new_listing {
     label {
-        color: white;
+        //color: white;
+    }
+}
+
+.listing-title {
+    div * {
+        margin-left:0;
+        margin-right: 0;
+    }
+}
+
+.row.listing-details {
+    .allowed {
+        text-decoration: line-through;
+    }
+}
+
+div.listing-info {
+    span {
+        //white-space: pre;
+        margin-right: 5px;
     }
 }

@@ -9,6 +9,8 @@
         %link{href:'https://fonts.googleapis.com/css?family=Open+Sans', rel:'stylesheet', type:'text/css'}
 
     %body
+        - if flash[:notice]
+            = render partial: 'utility/flash'
         = render partial: 'layouts/navbar'
         %div.container
             = yield
@@ -19,7 +21,7 @@
         = render partial: 'utility/signup_modal'
 
         -# todo fix the position of the footer
-        %footer#footer.footer
+        %footer#footer.footer.mt-2
             %div.container
             %nav.nav
                 %a.nav-link About Us

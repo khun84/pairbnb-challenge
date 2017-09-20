@@ -1,0 +1,22 @@
+= form_for current_user, action: users_path(current_user), method: :patch, html:{class:"p-md-0 p-3"}  do |f|
+    - label_class = 'col-sm-2'
+    - value_class = 'col-sm-4'
+    .form-group.row
+        = f.label :name, class:label_class
+        = f.text_field :name, class:"#{value_class} form-control", value: current_user.name
+    .form-group.row
+        = f.label :email, class:label_class
+        = f.text_field :email, class:"#{value_class} form-control", value: current_user.email, readonly: true
+    .form-group.row
+        = f.label :state, class:label_class
+        = f.text_field :state, class:"#{value_class} form-control", value: current_user.state
+    .form-group.row
+        = f.label :country, class:label_class
+        = f.text_field :country, class:"#{value_class} form-control", value: current_user.country
+
+    .form-group.row
+        .col-sm-2
+        .col-sm-2
+            %button.btn.btn-primary.w-100.mb-1.mb-md-0{ type: 'submit'} Submit
+        .col-sm-2
+            %button.btn.btn-secondary.w-100{ action:user_path(current_user), role:'button'} Cancel

@@ -1,23 +1,38 @@
+$footer_height: 60px;
+
 body > .container {
     padding-top:60px;
 }
 
-ul.nav {
+#flash-message.alert {
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index:9999;
+    border-radius:0px;
+    margin-top:40px;
+
+}
+
+
+nav#header-navbar {
     background-color: #ff6944;
-}
 
-ul.nav li a {
-    color: white;
-    text-decoration: none;
-}
+    a.nav-link {
+        color: white;
+        text-decoration: none;
+    }
 
-ul.nav li a:hover {
-    color: black;
+    a.nav-link:hover {
+        color: black;
+    }
+
 }
 
 .jumbotron {
     background-color: transparent;
-    color: white;
+    color: black;
     //position: relative;
     text-align: center;
 }
@@ -27,11 +42,18 @@ ul.nav li a:hover {
     min-width: 200px;
 }
 
+#listings-card {
+
+    div.card-footer {
+        background: transparent;
+    }
+}
+
 footer#footer {
     position: absolute;
-    height:60px;
+    height: $footer_height;
     background-color: black;
-    bottom:0;
+    bottom: -$footer_height;
     width:100%;
 
     a {
@@ -43,6 +65,13 @@ footer#footer {
         color: yellow;
     }
 }
+
+
+#listing-card.avoid-footer {
+    margin-bottom: 70px;
+
+}
+
 
 //-----------------
 //.jumbotron .container{

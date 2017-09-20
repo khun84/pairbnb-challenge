@@ -1,0 +1,9 @@
+#flash-message.alert.alert-success.alert-dismissable.mb-0.rounded-0.fade.show
+    %a.close{href:'#', "data-dismiss":'alert', "aria-label":'close', role:'alert'}
+        &times;
+    %strong Success!
+    - if flash[:notice].is_a? Enumerable
+        - flash[:notice].each do |msg|
+            = msg
+    - else
+        = flash[:notice]

@@ -3,118 +3,19 @@
 @import "bootstrap_override";
 @import 'pagination';
 @import 'listings';
+@import 'users';
 
 html {
     min-height: 100%;
     position: relative;
     }
 
+
 body {
     margin: 0;
-    background: linear-gradient(
-                    rgba(0, 0, 0, 0.3),
-                    rgba(0, 0, 0, 0.3)
-    ),
-    image_url("sample_cover.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     font-family: 'Open Sans', sans-serif;
-}
-
-
-
-
-.para-one {
-    color: white;
-}
-
-.para-two {
-    color: white;
-}
-
-/*----- Menu -----*/
-//.menu {
-//    width: 100%;
-//    background: #ff5a5f;
-//}
-//
-//.menu ul {
-//    display: inline-block;
-//}
-//
-//.menu li {
-//    margin: 0px 50px 0px 0px;
-//    float: left;
-//    list-style: none;
-//    font-size: small;
-//    text-transform: uppercase;
-//    letter-spacing: 2px;
-//}
-//
-//.menu li:last-child {
-//    margin-right: 0px;
-//}
-//
-//.menu a {
-//    color: #fff;
-//    transition: color linear 0.15s;
-//    text-decoration: none;
-//}
-//
-//.menu a:hover, .menu .current-item a {
-//    text-decoration: none;
-//    color: #303030;
-//}
-//
-//.menu {
-//    width: 100%;
-//    background: #ff5a5f;
-//}
-//
-//.menu ul {
-//    display: inline-block;
-//}
-//
-//.menu li {
-//    margin: 0px 50px 0px 0px;
-//    float: left;
-//    list-style: none;
-//    font-size: 17px;
-//}
-//
-//.menu li:last-child {
-//    margin-right: 0px;
-//}
-//
-//.menu a {
-//    color: #fff;
-//    transition: color linear 0.15s;
-//    text-decoration: none;
-//}
-//
-//.menu a:hover, .menu .current-item a {
-//    text-decoration: none;
-//    color: #303030;
-//}
-
-#footer {
-    clear: both;
-    //position: relative;
-    z-index: 10;
-    height: 3em;
-    margin-top: -3em;
-    background-color: black;
-    color: white;
-    padding: 10px;
-    margin: auto;
-    ul {
-        li {
-            float: left;
-            margin-right: 20px;
-            list-style: none;
-            display: inline;
-        }
-    }
 }
