@@ -1,14 +1,23 @@
-%ul.nav.fixed-top
-    %li.nav-item
-        %a.nav-link.active{href:'#'} Home
-    - if current_user.nil?
-        %li.nav-item
-            %a.nav-link{href:'#signin-modal', 'data-toggle':'modal', 'data-target':'#signin-modal'} Sign In
-        %li.nav-item
-            %a.nav-link{href:'#'} Sign Up
-    %li.nav-item
-        %a.nav-link{href:'#'} About Us
-    - if current_user
-        %form#signout-form{action:'/sign_out', method:'post'}
-            = token_tag
-            %button.btn.btn-primary.float-right{role:'button', type:'submit'} Sign Out
+%nav#header-navbar.navbar.navbar-expand-md.navbar-light
+    %a.navbar-brand{:href => root_path} Pairbnb
+    %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+        %ul.navbar-nav.mr-md-auto
+            %li.nav-item.active
+                %a.nav-link{:href => root_path}
+                    Home
+                    %span.sr-only (current)
+            - if current_user.nil?
+                %li.nav-item
+                    %a.nav-link{href:'#signin-modal', 'data-toggle'=>"modal", 'data-target'=>'#signin-modal'} Sign In
+                %li.nav-item
+                    %a.nav-link{href:'#signup-modal', 'data-toggle'=>'modal', 'data-target'=>'#signup-modal'} Sign Up
+            %li.nav-item
+                %a.nav-link{href:'#'} About Us
+        %ul.navbar-nav
+            - if current_user
+                %li#user-link.nav-item
+                    = link_to current_user.name, user_path(current_user), class:'nav-link'
+                %li.nav-item
+                    = link_to 'Sign out', sign_out_path, method: :delete, class:'nav-link'

@@ -1,0 +1,161 @@
+Country,State,City
+Malaysia,Johor,Batu Pahat
+Malaysia,Johor,Johor Baharu
+Malaysia,Johor,Keluang
+Malaysia,Johor,Kota Tinggi
+Malaysia,Johor,Mersing
+Malaysia,Johor,Muar
+Malaysia,Johor,Pontian
+Malaysia,Johor,Segamat
+Malaysia,Kedah,Baling
+Malaysia,Kedah,Bandar Baharu
+Malaysia,Kedah,Kota Setar
+Malaysia,Kedah,Kuala Muda
+Malaysia,Kedah,Kubang Pasu
+Malaysia,Kedah,Kulim
+Malaysia,Kedah,Langkawi
+Malaysia,Kedah,Padang Terap
+Malaysia,Kedah,Pendang
+Malaysia,Kedah,Sik
+Malaysia,Kedah,Yan
+Malaysia,Kelantan,Bachok
+Malaysia,Kelantan,Gua Musang
+Malaysia,Kelantan,Kota Bharu
+Malaysia,Kelantan,Kuala Krai
+Malaysia,Kelantan,Machang
+Malaysia,Kelantan,Pasir Mas
+Malaysia,Kelantan,Pasir Putih
+Malaysia,Kelantan,Tanah Merah
+Malaysia,Kelantan,Tumpat
+Malaysia,Melaka,Alor Gajah
+Malaysia,Melaka,Jasin
+Malaysia,Melaka,Melaka Tengah
+Malaysia,Negeri Sembilan,Jelebu
+Malaysia,Negeri Sembilan,Jempol
+Malaysia,Negeri Sembilan,Kuala Pilah
+Malaysia,Negeri Sembilan,Port Dickson
+Malaysia,Negeri Sembilan,Rembau
+Malaysia,Negeri Sembilan,Seremban
+Malaysia,Negeri Sembilan,Tampin
+Malaysia,Pahang,Bentong
+Malaysia,Pahang,Bera
+Malaysia,Pahang,Cameron Highlands
+Malaysia,Pahang,Jerantut
+Malaysia,Pahang,Kuantan
+Malaysia,Pahang,Lipis
+Malaysia,Pahang,Maran
+Malaysia,Pahang,Pekan
+Malaysia,Pahang,Raub
+Malaysia,Pahang,Rompin
+Malaysia,Pahang,Temerloh
+Malaysia,Perak,Batang Padang
+Malaysia,Perak,Hilir Perak
+Malaysia,Perak,Hulu Perak
+Malaysia,Perak,Kerian
+Malaysia,Perak,Kinta
+Malaysia,Perak,Kuala Kangsar
+Malaysia,Perak,Larut and Matang
+Malaysia,Perak,Manjung
+Malaysia,Perak,Perak Tengah
+Malaysia,Perak,Selama
+Malaysia,Perlis,Perlis
+Malaysia,Pulau Pinang,Barat Daya
+Malaysia,Pulau Pinang,Seberang Perai Selatan
+Malaysia,Pulau Pinang,Seberang Perai Tengah
+Malaysia,Pulau Pinang,Seberang Perai Utara
+Malaysia,Pulau Pinang,Timur Laut
+Malaysia,Sabah,Beaufort
+Malaysia,Sabah,Keningau
+Malaysia,Sabah,Kinabatangan
+Malaysia,Sabah,Kota Belud
+Malaysia,Sabah,Kota Kinabalu
+Malaysia,Sabah,Kota Marudu
+Malaysia,Sabah,Kuala Penyu
+Malaysia,Sabah,Kudat
+Malaysia,Sabah,Labuk & Sugut
+Malaysia,Sabah,Lahad Datu
+Malaysia,Sabah,Papar
+Malaysia,Sabah,Penampang
+Malaysia,Sabah,Pensiangan
+Malaysia,Sabah,Pitas
+Malaysia,Sabah,Ranau
+Malaysia,Sabah,Sandakan
+Malaysia,Sabah,Semporna
+Malaysia,Sabah,Sipitang
+Malaysia,Sabah,Tambunan
+Malaysia,Sabah,Tawau
+Malaysia,Sabah,Tenom
+Malaysia,Sabah,Tuaban
+Malaysia,Sarawak,Asajaya
+Malaysia,Sarawak,Bahagian Miri (Long Lama)
+Malaysia,Sarawak,Balingian
+Malaysia,Sarawak,Bau
+Malaysia,Sarawak,Belaga
+Malaysia,Sarawak,Belawai
+Malaysia,Sarawak,Beluru
+Malaysia,Sarawak,Betong
+Malaysia,Sarawak,Bintulu
+Malaysia,Sarawak,Budu
+Malaysia,Sarawak,Dalat
+Malaysia,Sarawak,Daro
+Malaysia,Sarawak,Debak
+Malaysia,Sarawak,Engkilili
+Malaysia,Sarawak,Julau
+Malaysia,Sarawak,Kabong
+Malaysia,Sarawak,Kanowit
+Malaysia,Sarawak,Kapit
+Malaysia,Sarawak,Kuching
+Malaysia,Sarawak,Lawas
+Malaysia,Sarawak,Limbang
+Malaysia,Sarawak,Lingga
+Malaysia,Sarawak,Lubok Antu
+Malaysia,Sarawak,Lundu
+Malaysia,Sarawak,Maludam
+Malaysia,Sarawak,Marudi
+Malaysia,Sarawak,Matu
+Malaysia,Sarawak,Meradong
+Malaysia,Sarawak,Miri
+Malaysia,Sarawak,Mukah
+Malaysia,Sarawak,Nanga Medamit
+Malaysia,Sarawak,Nanga Merit
+Malaysia,Sarawak,Niah Suai
+Malaysia,Sarawak,Oya
+Malaysia,Sarawak,Padawan
+Malaysia,Sarawak,Pakan
+Malaysia,Sarawak,Pantu
+Malaysia,Sarawak,Pendam
+Malaysia,Sarawak,Pusa
+Malaysia,Sarawak,Roban
+Malaysia,Sarawak,Samarahan
+Malaysia,Sarawak,Saratok
+Malaysia,Sarawak,Sarikei
+Malaysia,Sarawak,Sebuyao
+Malaysia,Sarawak,Sematan
+Malaysia,Sarawak,Serian
+Malaysia,Sarawak,Sibu
+Malaysia,Sarawak,Siburan
+Malaysia,Sarawak,Sibuti
+Malaysia,Sarawak,Simunjan
+Malaysia,Sarawak,Song
+Malaysia,Sarawak,Spaoh
+Malaysia,Sarawak,Sri Aman
+Malaysia,Sarawak,Sundar
+Malaysia,Sarawak,Tatau
+Malaysia,Sarawak,Tebedu
+Malaysia,Sarawak,Trusan
+Malaysia,Selangor,Gombak
+Malaysia,Selangor,Hulu Langat
+Malaysia,Selangor,Hulu Selangor
+Malaysia,Selangor,Klang
+Malaysia,Selangor,Kuala Langat
+Malaysia,Selangor,Kuala Selangor
+Malaysia,Selangor,Sabak Bernam
+Malaysia,Selangor,Sepang
+Malaysia,Selangor,Shah Alam
+Malaysia,Trengganu,Besut
+Malaysia,Trengganu,Dungun
+Malaysia,Trengganu,Hulu Terengganu
+Malaysia,Trengganu,Kemaman
+Malaysia,Trengganu,Kuala Terengganu
+Malaysia,Trengganu,Marang
+Malaysia,Trengganu,Setiu

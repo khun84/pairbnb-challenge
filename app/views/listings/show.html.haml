@@ -1,0 +1,67 @@
+#carouselExampleIndicators.carousel.slide{"data-ride" => "carousel"}
+    %ol.carousel-indicators
+        -# todo insert the image count here
+        %li.active{"data-slide-to" => "0", "data-target" => "#carouselExampleIndicators"}
+    .carousel-inner
+        -# todo insert the image url here
+        .carousel-item.active
+            %img.d-block.w-100{:alt => "First slide", :src => "..."}/
+    %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleIndicators", :role => "button"}
+        %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+        %span.sr-only Previous
+    %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleIndicators", :role => "button"}
+        %span.carousel-control-next-icon{"aria-hidden" => "true"}
+        %span.sr-only Next
+
+%hr
+.listing-info
+    .row.listing-title
+        .col-sm-8
+            - if current_user.id == @listing.user_id
+                .col-sm-4
+                    = button_to 'Edit', edit_user_listing_path(current_user, @listing), method: :get,
+                    class: "btn btn-primary w-100", role: 'button'
+    .row.listing-title
+        .col-sm-8
+            %h2
+                = @listing.name
+            %p.lead
+                = "#{@listing.location.city}, #{@listing.location.state}, #{@listing.location.country}"
+            %hr
+    .row.listing-details
+        .col-sm-8
+            %h5
+                The Space
+            .col-sm-4
+                .row
+                    %span
+                        = "Accomodates:"
+                    %span.font-weight-bold
+                        = @listing.person_count
+                .row
+                    %span
+                        = "Rooms: "
+                    %span.font-weight-bold
+                        = @listing.room_count
+            %hr.my-1
+    .row.listing-details
+        .col-sm-8
+            %h5
+                The Price
+            .col-sm-4
+                .row
+                    %span
+                        = "Base price:"
+                    %span.font-weight-bold
+                        = "RM #{@listing.base_price.to_i}"
+            %hr.my-1
+    .row.listing-details
+        .col-sm-8
+            %h5
+                The Amenities
+            .col-sm-4
+                .row{class: line_through_class(@listing.pet)}
+                    = "Pet allowed"
+                .row{class: line_through_class(@listing.smoke)}
+                    = "Smoking allowed"
+

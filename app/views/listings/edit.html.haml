@@ -1,0 +1,53 @@
+= form_for [current_user, @listing], method: :patch, html:{class:"p-2"} do |f|
+    - label_class = 'col-sm-2'
+    - value_class = 'col-sm-4'
+    - value_class_half = 'col-md-2'
+    .form-group.row
+        = f.label :name, class:label_class
+        = f.text_field :name, class:"#{value_class} form-control", value: @listing.name
+    .form-group.row
+        = f.label :location, class:"#{label_class}", for: "location_id"
+        %select.form-control{name:'listing[location_id]', id:"location_id", class: - value_class}
+            - @locations.each do |loc|
+                - selected = true if loc.id == @listing.location_id || false
+                %option{value: loc.id, selected: selected}
+                    = "#{loc.state} | #{loc.city}"
+    .form-group.row
+        = f.label :room_count, class:label_class, for: "room_count_id"
+        %select.form-control{name:'listing[room_count]', id:"room_count_id", class: - value_class}
+            - (1..10).each do |i|
+                - selected = true if i == @listing.room_count || false
+                %option{value: i, selected: selected}
+                    = "#{i} rooms"
+    .form-group.row
+        = f.label :person_count, class:label_class, for: 'person_count'
+        %select.form-control{name:'listing[person_count]', id:"person_count", class: - value_class}
+            - (1..12).each do |i|
+                - selected = true if @listing.person_count == i || false
+                %option{value: i, selected: selected}
+                    = "#{i} person"
+    .form-group.row
+        = f.label :base_price, class:label_class
+        = f.text_field :base_price, class: "#{value_class} form-control", value: @listing.base_price
+    -# smoke here
+    .form-group.row
+        = f.label :smoke, class: label_class
+        %select.form-control{name:"listing[smoke]", class: - value_class}
+            - ["Y", "N"].each do |choice|
+                - selected = true if @listing.smoke == choice || false
+                %option{value: choice, selected: selected}
+                    = choice
+    -# pet here
+    .form-group.row
+        = f.label :pet, class: label_class
+        %select.form-control{name:"listing[pet]", class: - value_class}
+            - ["Y", "N"].each do |choice|
+                - selected = true if @listing.pet == choice || false
+                %option{value: choice, selected: selected}
+                    = choice
+    .form-group.row
+        %div{class: value_class_half}
+        %div{class: value_class_half}
+            %button.btn.btn-primary.w-100.mb-2.mb-md-0{ type: 'submit'} Submit
+        %div{class: value_class_half}
+            %button.btn.btn-secondary.w-100{action: listing_path(@listing), role:'button'} Cancel

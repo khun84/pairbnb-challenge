@@ -1,11 +1,38 @@
-nav li a {
-    color: white;
-    text-decoration: none;
+$footer_height: 60px;
+
+body > .container {
+    padding-top:60px;
+}
+
+#flash-message.alert {
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index:9999;
+    border-radius:0px;
+    margin-top:40px;
+
+}
+
+
+nav#header-navbar {
+    background-color: #ff6944;
+
+    a.nav-link {
+        color: white;
+        text-decoration: none;
+    }
+
+    a.nav-link:hover {
+        color: black;
+    }
+
 }
 
 .jumbotron {
     background-color: transparent;
-    color: white;
+    color: black;
     //position: relative;
     text-align: center;
 }
@@ -14,6 +41,37 @@ nav li a {
     text-align: center;
     min-width: 200px;
 }
+
+#listings-card {
+
+    div.card-footer {
+        background: transparent;
+    }
+}
+
+footer#footer {
+    position: absolute;
+    height: $footer_height;
+    background-color: black;
+    bottom: -$footer_height;
+    width:100%;
+
+    a {
+        color: white;
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: yellow;
+    }
+}
+
+
+#listing-card.avoid-footer {
+    margin-bottom: 70px;
+
+}
+
 
 //-----------------
 //.jumbotron .container{

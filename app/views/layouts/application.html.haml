@@ -9,18 +9,23 @@
         %link{href:'https://fonts.googleapis.com/css?family=Open+Sans', rel:'stylesheet', type:'text/css'}
 
     %body
+        - if flash[:notice]
+            = render partial: 'utility/flash'
         = render partial: 'layouts/navbar'
         %div.container
             = yield
 
-        %div.pusher
-        = render 'utility/login_alert_modal'
+        -# some modals for user to interact with users
+        = render partial: 'utility/login_alert_modal'
         = render partial: 'utility/signin_modal'
+        = render partial: 'utility/signup_modal'
 
-        %div.footer{id:'footer'}
-            %ul
-                %li About Us
-                %li Privacy
-                %li Terms
-                %li Contact Us
-                %li Signup for newsletter
+        -# todo fix the position of the footer
+        %footer#footer.footer.mt-2
+            %div.container
+            %nav.nav
+                %a.nav-link About Us
+                %a.nav-link Privacy
+                %a.nav-link Terms
+                %a.nav-link Contact Us
+                %a.nav-link Signup for newsletter

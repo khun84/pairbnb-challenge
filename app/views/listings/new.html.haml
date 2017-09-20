@@ -1,0 +1,39 @@
+= form_for [current_user, @listing] do |f|
+    - label_class = 'col-sm-2'
+    - value_class = 'col-sm-4'
+    .form-group.row
+        = f.label :name, class:label_class
+        = f.text_field :name, class:value_class, placeholder: 'Name of your property'
+    .form-group.row
+        = f.label :location, class:label_class, for: "location_id"
+        %select.form-control{name:'listing[location_id]', id:"location_id", class: - value_class}
+            - @locations.each do |loc|
+                %option{value: loc.id}
+                    = "#{loc.state} | #{loc.city}"
+    .form-group.row
+        = f.label :person_count, class:label_class, for: 'person_count'
+        %select.form-control{name:'listing[person_count]', id:"person_count", class: - value_class}
+            - (1..12).each do |i|
+                %option{value: i}
+                    = "#{i} person"
+    .form-group.row
+        = f.label :base_price, class:label_class
+        = f.text_field :base_price, class:value_class, placeholder: 'Base price per night'
+    -# smoke here
+    .form-group.row
+        = f.label :smoke, class: label_class
+        %select.form-control{name:"listing[smoke]", class: - value_class}
+            %option{value: "Y"}
+                Y
+            %option{value: "N"}
+                N
+    -# pet here
+    .form-group.row
+        = f.label :pet, class: label_class
+        %select.form-control{name:"listing[pet]", class: - value_class}
+            %option{value: "Y"}
+                Y
+            %option{value: "N"}
+                N
+    .form-group.row
+        %button.btn.btn-primary{class: 'col-sm-6', type: 'submit'} Submit
