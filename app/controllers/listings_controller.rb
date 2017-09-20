@@ -1,4 +1,17 @@
 class ListingsController < ApplicationController
+    before_action(only: [:create]) do
+        not_sign_in_redirect url: listings_path, msg: 'Please sign in to perform this action'
+    end
+
+    before_action(only: [:show]) do
+        resource_exist? url: listings_path, resource: Listing, resource_id: params[:id], msg: 'There is no such listing'
+    end
+
+    before_action(only: [:edit, :update, :destroy]) do
+        resource_exist? url: listings_path, resource: Listing, resource_id: params[:id], msg: 'There is no such listing'
+        belongs_to_current_user? url: listing_path(params[:id]), resource: Listing, resource_id: params[:id], msg: "You can only edit your own listing"
+    end
+
     def index
 
         # @listings = Listing.all.order(:updated_at).reverse_order
@@ -16,7 +29,7 @@ class ListingsController < ApplicationController
     end
 
     def create
-        new_listing = current_user.listings.new(listing_params(params))
+        new_listing = current_user.listings.new(listing_params)
         @avoid_footer = 'avoid-footer'
         if new_listing.save
             redirect listing_path(new_listing)
@@ -46,6 +59,9 @@ class ListingsController < ApplicationController
     def destroy
 
     end
+
+    private
+
 
     def listing_params
         params.require(:listing).permit([:name, :location_id, :person_count, :base_price, :smoke, :pet, :user_id, :room_count])
