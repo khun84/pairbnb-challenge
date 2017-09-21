@@ -1,15 +1,22 @@
-#carouselExampleIndicators.carousel.slide{"data-ride" => "carousel"}
+#carouselListing.carousel.slide{"data-ride" => "carousel"}
     %ol.carousel-indicators
         -# todo insert the image count here
-        %li.active{"data-slide-to" => "0", "data-target" => "#carouselExampleIndicators"}
+        %li.active{"data-slide-to" => "0", "data-target" => "#carouselListing"}
     .carousel-inner
         -# todo insert the image url here
         .carousel-item.active
-            %img.d-block.w-100{:alt => "First slide", :src => "..."}/
-    %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleIndicators", :role => "button"}
+            - if @listing.images.size == 0
+                %img.d-block.w-100{:alt => "First slide", :src => "..."}
+            - else
+                %img.d-block.w-100{alt: 'listing image', :src => image_url(@listing.images[0].url)}
+        - if @listing.images.size > 1
+            - (1...@listing.images.size).each do |i|
+                .carousel-item
+                    %img.d-block.w-100{alt: 'listing image', src: image_url(@listing.images[i].url)}
+    %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselListing", :role => "button"}
         %span.carousel-control-prev-icon{"aria-hidden" => "true"}
         %span.sr-only Previous
-    %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleIndicators", :role => "button"}
+    %a.carousel-control-next{"data-slide" => "next", :href => "#carouselListing", :role => "button"}
         %span.carousel-control-next-icon{"aria-hidden" => "true"}
         %span.sr-only Next
 
