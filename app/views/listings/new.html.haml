@@ -36,6 +36,9 @@
                 Y
             %option{value: "N"}
                 N
+    .form-group.row.mx-0
+        = f.label :images, class: label_class
+        = f.file_field :images, multiple: true
     .form-group.row
         .col-sm-2
         .col-sm-2

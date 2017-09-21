@@ -26,10 +26,6 @@ class UsersController < Clearance::UsersController
         render 'show'
     end
 
-    def user_params
-        params.require(:user).permit(:email, :name, :state, :country, :password)
-    end
-
     def edit
 
     end
@@ -38,7 +34,12 @@ class UsersController < Clearance::UsersController
         not_sign_in_redirect msg: 'Please sign in to perform this action'
 
         @user = User.find(params[:id])
-        @user.update_attributes(user_params.except(:email))
+
+        if user_params[:avatar].nil?
+            @user.update_attributes user_params.except([:email, :avatar])
+        else
+            @user.update_attributes user_params.except(:email)
+        end
         if @user.save
             redirect_to user_path(current_user)
             return
@@ -47,5 +48,11 @@ class UsersController < Clearance::UsersController
             return
         end
     end
+
+
+    def user_params
+        params.require(:user).permit(:email, :name, :state, :country, :password, :avatar)
+    end
+
 end
 
