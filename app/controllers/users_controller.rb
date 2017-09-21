@@ -1,4 +1,8 @@
 class UsersController < Clearance::UsersController
+    before_action(only: [:show, :edit, :update, :destroy]) do
+        not_sign_in_redirect url: root_path, msg: 'Please sign in to perform this action'
+    end
+
     def new
         @user = User.new
         render "users/new"
@@ -31,12 +35,16 @@ class UsersController < Clearance::UsersController
     end
 
     def update
+        not_sign_in_redirect msg: 'Please sign in to perform this action'
+
         @user = User.find(params[:id])
         @user.update_attributes(user_params.except(:email))
         if @user.save
             redirect_to user_path(current_user)
+            return
         else
             redirect_to edit_user_path(current_user)
+            return
         end
     end
 end

@@ -2,18 +2,29 @@ Rails.application.routes.draw do
     resources :passwords, controller: "clearance/passwords", only: [:create, :new]
     resource :session, controller: "sessions", only: [:create]
 
-
+    # users resources
     resources :users, controller: 'users', only: [:index, :show, :edit, :update]
     resources :users, controller: "users", only: [:create] do
         resource :password,
                  controller: "clearance/passwords",
                  only: [:create, :edit, :update]
-        resources :listings
+        resources :listings, except: [:destroy]
     end
 
+
+
+    # listings resources
     resources :listings, only: [:index, :show] do
         resources :reservations
+
+        member do
+            get 'verify/edit' => 'listings#edit_by_moderator', as: :edit_by_moderator
+            # patch 'verify' => 'listings#update_verified', as: :update_verify
+
+        end
     end
+
+    delete '/users/:user_id/listings/:id' => 'listings#destroy', as: :delete_user_listing
 
     root 'static#index'
 

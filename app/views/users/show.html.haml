@@ -7,6 +7,9 @@
     %p.lead
         You have # reservation
     = button_to 'Edit profile', edit_user_path(current_user.id), method: :get, class: "btn btn-primary", role: "button"
+.row
+    .col-sm-2
+        = button_to 'New listing', new_user_listing_path(current_user), method: :get, class: 'btn btn-primary', role: 'button'
 
 = render partial: 'listings/listing_cards'
 

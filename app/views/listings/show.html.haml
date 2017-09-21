@@ -15,12 +15,18 @@
 
 %hr
 .listing-info
-    .row.listing-title
+    .row.listing-control
         .col-sm-8
-            - if current_user.id == @listing.user_id
-                .col-sm-4
-                    = button_to 'Edit', edit_user_listing_path(current_user, @listing), method: :get,
-                    class: "btn btn-primary w-100", role: 'button'
+            .row
+                - if current_user.id == @listing.user_id or current_user.moderator?
+                    .col-sm-2
+                        = button_to 'Edit', edit_user_listing_path(current_user, @listing), method: :get,
+                        form_class: 'form-inline',class: "btn btn-primary w-100", role: 'button'
+                - if current_user.id == @listing.user_id
+                    .col-sm-2
+                        = button_to 'Remove', delete_user_listing_path(@listing), method: :delete,
+                         form_class: 'form-inline', class: 'btn btn-danger w-100',
+                         role:'button', data:{confirm:'Do you want to remove this listing?'}
     .row.listing-title
         .col-sm-8
             %h2
@@ -32,36 +38,39 @@
         .col-sm-8
             %h5
                 The Space
-            .col-sm-4
-                .row
-                    %span
-                        = "Accomodates:"
-                    %span.font-weight-bold
-                        = @listing.person_count
-                .row
-                    %span
-                        = "Rooms: "
-                    %span.font-weight-bold
-                        = @listing.room_count
+            .row
+                .col-sm-4
+                    .row.mx-0
+                        %span
+                            = "Accomodates:"
+                        %span.font-weight-bold
+                            = @listing.person_count
+                    .row.mx-0
+                        %span
+                            = "Rooms: "
+                        %span.font-weight-bold
+                            = @listing.room_count
             %hr.my-1
     .row.listing-details
         .col-sm-8
             %h5
                 The Price
-            .col-sm-4
-                .row
-                    %span
-                        = "Base price:"
-                    %span.font-weight-bold
-                        = "RM #{@listing.base_price.to_i}"
+            .row
+                .col-sm-4
+                    .row.mx-0
+                        %span
+                            = "Base price:"
+                        %span.font-weight-bold
+                            = "RM #{@listing.base_price.to_i}"
             %hr.my-1
     .row.listing-details
         .col-sm-8
             %h5
                 The Amenities
-            .col-sm-4
-                .row{class: line_through_class(@listing.pet)}
-                    = "Pet allowed"
-                .row{class: line_through_class(@listing.smoke)}
-                    = "Smoking allowed"
+            .row
+                .col-sm-4
+                    .row{class: - "#{line_through_class(@listing.pet)} mx-0"}
+                        = "Pet allowed"
+                    .row{class: - "#{line_through_class(@listing.smoke)} mx-0"}
+                        = "Smoking allowed"
 

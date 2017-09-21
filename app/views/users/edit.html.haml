@@ -19,4 +19,6 @@
         .col-sm-2
             %button.btn.btn-primary.w-100.mb-1.mb-md-0{ type: 'submit'} Submit
         .col-sm-2
-            %button.btn.btn-secondary.w-100{ action:user_path(current_user), role:'button'} Cancel
+            %a.btn.btn-secondary.w-100{ href:user_path(current_user), role:'button'} Cancel
+            -#= button_to 'Cancel', users_path(current_user), method: :get, action: 'show',
+            -#html: {class: 'btn btn-secondary w-100', role: 'button', type: 'button'}
