@@ -43,6 +43,8 @@ gem 'omniauth-facebook'
 gem 'omniauth'
 # use Paginate
 gem 'will_paginate', '~> 3.1.0'
+# use Carrierwave for image uploading
+gem 'carrierwave', '~> 1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

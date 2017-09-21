@@ -58,12 +58,23 @@ require 'csv'
 #         listing.save
 #     end
 # end
-User.transaction do
-    User.all.each do |user|
-        if user.email == 'khun84@gmail.com'
-            user.moderator!
-        else
-            user.customer!
-        end
-    end
-end
+
+############## SET USER ROLE
+# User.transaction do
+#     User.all.each do |user|
+#         if user.email == 'khun84@gmail.com'
+#             user.moderator!
+#         else
+#             user.customer!
+#         end
+#     end
+# end
+
+############# SET LISTING VERIFIED VALUE
+# Listing.transaction do
+#     Listing.all.each do |listing|
+#         listing.verified = false
+#         listing.save!
+#     end
+# end
+

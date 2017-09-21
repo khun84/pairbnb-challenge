@@ -2,6 +2,7 @@
     - label_class = 'col-sm-2'
     - value_class = 'col-sm-4'
     - value_class_half = 'col-md-2'
+
     .form-group.row
         = f.label :name, class:label_class
         = f.text_field :name, class:"#{value_class} form-control", value: @listing.name
@@ -45,6 +46,15 @@
                 - selected = true if @listing.pet == choice || false
                 %option{value: choice, selected: selected}
                     = choice
+    -# moderator verify here
+    - if current_user.moderator?
+        .form-group.row
+            = f.label :verified, class: label_class
+            %select.form-control{name:"listing[verified", class: - value_class}
+                - ["Y", "N"].each do |choice|
+                    - selected = true if boolean_to_yes_no(@listing.verified) == choice || false
+                    %option{value: choice, selected: selected}
+                        =choice
     .form-group.row
         %div{class: value_class_half}
         %div{class: value_class_half}

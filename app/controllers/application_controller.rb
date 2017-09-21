@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
 
     # let the url to become nil if want to return a boolean
     def belongs_to_current_user?(url: nil,resource: nil, resource_id: nil, msg: default_msg)
-
-
         is_owner = resource.find(resource_id).user_id == current_user.id
 
         if url.nil?
@@ -43,13 +41,24 @@ class ApplicationController < ActionController::Base
                 return true
             end
         else
-            # redirect user with message
+            # redirect user with message and instruct the controller to continue or stop the block
             if !is_exist
                 flash[:notice] = msg
-                return redirect_to url, notice: msg
+                redirect_to url, notice: msg
+                return false
+            else
+                return true
             end
         end
 
+    end
+
+    def is_moderator?(url: redirect_default_path, msg: default_msg)
+        if current_user.moderator?
+            redirect_to url, notice: msg
+            return false
+        end
+        return true
     end
 
     private

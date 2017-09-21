@@ -1,8 +1,7 @@
 class StaticController < ApplicationController
-
+    include ListingsHelper
     def index
-        @listings = Listing.all.order(:updated_at).reverse_order.paginate(page:params[:page], per_page: 3)
+        @listings = listings_by_role
         render 'static/index'
     end
-
 end
