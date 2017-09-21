@@ -58,7 +58,9 @@ nav#header-navbar {
 
 #carouselListing {
     img {
-        //height:68vw;
+        height:30vw;
+        object-fit: cover;
+        object-position: center;
     }
 }
 

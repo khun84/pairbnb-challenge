@@ -26,11 +26,11 @@
         .col-sm-8
             .row
                 - if current_user.id == @listing.user_id or current_user.moderator?
-                    .col-sm-2
+                    .col-sm-4.col-lg-2.col-6
                         = button_to 'Edit', edit_user_listing_path(current_user, @listing), method: :get,
                         form_class: 'form-inline',class: "btn btn-primary w-100", role: 'button'
                 - if current_user.id == @listing.user_id
-                    .col-sm-2
+                    .col-sm-4.col-lg-2.col-6
                         = button_to 'Remove', delete_user_listing_path(@listing), method: :delete,
                          form_class: 'form-inline', class: 'btn btn-danger w-100',
                          role:'button', data:{confirm:'Do you want to remove this listing?'}
