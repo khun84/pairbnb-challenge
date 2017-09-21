@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
     has_many :authentications
     has_many :listings
+    has_many :reservations
 
     enum role:[:customer, :moderator, :admin]
 
