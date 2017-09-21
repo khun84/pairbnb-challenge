@@ -17,6 +17,8 @@
                 %a.nav-link{href:'#'} About Us
         %ul.navbar-nav
             - if current_user
+                %li#user-avatar.nav-item
+                    %img.rounded-circle{src: current_user.avatar}
                 %li#user-link.nav-item
                     = link_to current_user.name, user_path(current_user), class:'nav-link'
                 %li.nav-item

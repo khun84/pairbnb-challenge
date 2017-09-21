@@ -45,6 +45,7 @@ gem 'omniauth'
 gem 'will_paginate', '~> 3.1.0'
 # use Carrierwave for image uploading
 gem 'carrierwave', '~> 1.0'
+gem "mini_magick" # for image resizing
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

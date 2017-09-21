@@ -66,7 +66,6 @@ class ListingsController < ApplicationController
     end
 
     def update
-
         @listing = Listing.find(params[:id])
         if current_user.moderator?
             role_params = moderator_params
@@ -74,7 +73,6 @@ class ListingsController < ApplicationController
             role_params = listing_params.except([:user_id, :verified])
             role_params['verified'] = yes_no_to_boolean(role_params['verified'])
         end
-        byebug
         @listing.update_attributes(role_params)
         if @listing.save
             flash[:notice] = 'You have editted this listing'
@@ -93,13 +91,12 @@ class ListingsController < ApplicationController
             listing.destroy
             return redirect_to current_user, notice: 'The listing has been deleted!'
         end
-
     end
 
     private
 
     def listing_params
-        params.require(:listing).permit([:name, :location_id, :person_count, :base_price, :smoke, :pet, :user_id, :room_count])
+        params.require(:listing).permit([:name, :location_id, :person_count, :base_price, :smoke, :pet, :user_id, :room_count, {images:[]}])
     end
 
     def moderator_params

@@ -10,7 +10,10 @@
             .col-md-4.px-0.my-sm-1
                 = link_to listing_path(listing) do
                     .card.rounded-0.mx-sm-1.mx-sm-1.border-0
-                        %img.card-img-top.rounded-0{:alt => listing.name, :src => image_url('listing_sample_cover.jpg')}/
+                        - if listing.images.size == 0
+                            %img.card-img-top.rounded-0{:alt => listing.name, :src => image_url('listing_sample_cover.jpg')}
+                        - else
+                            %img.card-img-top.rounded-0{:alt => listing.name, :src => image_url(listing.images[0].url)}
                         .card-body.py-sm-1
                             %p.card-text.font-weight-bold.mb-sm-1
                                 = "RM#{listing.base_price.to_i} #{listing.name}"
