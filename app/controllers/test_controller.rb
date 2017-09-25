@@ -4,4 +4,8 @@ class TestController < ApplicationController
         @locations = Location.all.order(:state)
         render 'listings/new'
     end
+
+    def test
+        render 'testing'
+    end
 end

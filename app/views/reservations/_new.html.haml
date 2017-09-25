@@ -1,0 +1,17 @@
+= form_for Reservation.new, url: "/listings/#{@listing.id}/reservations",
+    method: :create, html:{class: 'mx-2'} do |f|
+    .row.mb-1
+        = f.label :check_in, class: 'col-md-4'
+        = f.text_field :check_in, class: "calendar-input col-md-8 form-control"
+    .row.mb-1
+        = f.label :check_out, class: 'col-md-4'
+        = f.text_field :check_out, class: "calendar-input col-md-8 form-control"
+    .row.mb-1
+        = f.label :num_of_guests, class: 'col-md-4'
+        = f.number_field :num_of_guests, class: "col-md-8 form-control"
+    -#= hidden_field_tag 'base_price', @listing.base_price
+    -#= f.label :price
+    -#= f.number_field :price, value: @listing.base_price, disabled: true
+    .row.mb-1
+        = f.hidden_field :listing_id, value: @listing.id
+        = f.submit 'Book', class: 'btn btn-primary ml-auto col-md-4'

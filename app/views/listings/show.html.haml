@@ -26,58 +26,70 @@
         .col-sm-8
             .row
                 - if current_user.id == @listing.user_id or current_user.moderator?
-                    .col-sm-4.col-lg-2.col-6
+                    .col-sm-4.col-lg-3.col-4.p-1
                         = button_to 'Edit', edit_user_listing_path(current_user, @listing), method: :get,
                         form_class: 'form-inline',class: "btn btn-primary w-100", role: 'button'
                 - if current_user.id == @listing.user_id
-                    .col-sm-4.col-lg-2.col-6
+                    .col-sm-4.col-lg-3.col-4.p-1
+                        = link_to 'Reservations', listing_reservations_path(@listing),
+                        class: 'btn btn-primary w-100', role: 'button'
+                    .col-sm-4.col-lg-3.col-4.p-1
                         = button_to 'Remove', delete_user_listing_path(@listing), method: :delete,
                          form_class: 'form-inline', class: 'btn btn-danger w-100',
                          role:'button', data:{confirm:'Do you want to remove this listing?'}
-    .row.listing-title
-        .col-sm-8
-            %h2
-                = @listing.name
-            %p.lead
-                = "#{@listing.location.city}, #{@listing.location.state}, #{@listing.location.country}"
-            %hr
-    .row.listing-details
-        .col-sm-8
-            %h5
-                The Space
-            .row
-                .col-sm-4
-                    .row.mx-0
-                        %span
-                            = "Accomodates:"
-                        %span.font-weight-bold
-                            = @listing.person_count
-                    .row.mx-0
-                        %span
-                            = "Rooms: "
-                        %span.font-weight-bold
-                            = @listing.room_count
-            %hr.my-1
-    .row.listing-details
-        .col-sm-8
-            %h5
-                The Price
-            .row
-                .col-sm-4
-                    .row.mx-0
-                        %span
-                            = "Base price:"
-                        %span.font-weight-bold
-                            = "RM #{@listing.base_price.to_i}"
-            %hr.my-1
-    .row.listing-details
-        .col-sm-8
-            %h5
-                The Amenities
-            .row
-                .col-sm-4
-                    .row{class: - "#{line_through_class(@listing.pet)} mx-0"}
-                        = "Pet allowed"
-                    .row{class: - "#{line_through_class(@listing.smoke)} mx-0"}
-                        = "Smoking allowed"
+    .row
+        .col.listing-info.col-sm-6
+            .row.listing-title
+                .col-sm-12
+                    %h2
+                        = @listing.name
+                    %p.lead
+                        = "#{@listing.location.city}, #{@listing.location.state}, #{@listing.location.country}"
+                    %hr
+            .row.listing-details
+                .col-sm-12
+                    %h5
+                        The Space
+                    .row
+                        .col-sm-6
+                            .row.mx-0
+                                %span
+                                    = "Accomodates:"
+                                %span.font-weight-bold
+                                    = @listing.person_count
+                            .row.mx-0
+                                %span
+                                    = "Rooms: "
+                                %span.font-weight-bold
+                                    = @listing.room_count
+                    %hr.my-1
+            .row.listing-details
+                .col-sm-12
+                    %h5
+                        The Price
+                    .row
+                        .col-sm-6
+                            .row.mx-0
+                                %span
+                                    = "Base price:"
+                                %span.font-weight-bold
+                                    = "RM #{@listing.base_price.to_i}"
+                    %hr.my-1
+            .row.listing-details
+                .col-sm-12
+                    %h5
+                        The Amenities
+                    .row
+                        .col-sm-6
+                            .row{class: - "#{line_through_class(@listing.pet)} mx-0"}
+                                = "Pet allowed"
+                            .row{class: - "#{line_through_class(@listing.smoke)} mx-0"}
+                                = "Smoking allowed"
+        .col-sm-6.reservation-form
+            -# show the reservation booking form
+            - if @listing.user_id != current_user.id
+                = render partial: 'reservations/new'
+
+
+
 

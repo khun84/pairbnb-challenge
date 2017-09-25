@@ -24,7 +24,12 @@ Rails.application.routes.draw do
         end
     end
 
+    # reservations resources
+    resources :reservations
+
     delete '/users/:user_id/listings/:id' => 'listings#destroy', as: :delete_user_listing
+
+    # reservations resources
 
     root 'static#index'
 
@@ -34,6 +39,8 @@ Rails.application.routes.draw do
     post "/sign_up" => "users#new", as: "sign_up"
     get "/auth/:provider/callback" => "sessions#create_from_omniauth"
     ####### AUTHENTICATION END
+
+    get '/test' => 'test#test', as: 'testing'
 
 
 end

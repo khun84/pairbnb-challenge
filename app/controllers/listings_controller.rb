@@ -27,7 +27,11 @@ class ListingsController < ApplicationController
 
 
     def index
+        @is_host = false
         @listings = listings_by_role
+        if params.keys.include? 'user_id'
+            @is_host = true
+        end
         render 'listings/index'
     end
 

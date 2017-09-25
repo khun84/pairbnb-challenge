@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
     has_many :authentications
     has_many :listings
+    has_many :reservations
 
     enum role:[:customer, :moderator, :admin]
 
@@ -17,6 +18,11 @@ class User < ApplicationRecord
         )
         user.authentications << authentication
         return user
+    end
+
+    def get_listings_reservations
+        listings_ids = self.listings.pluck(:id)
+        Reservation.where("listing_id in (?)", listings_ids)
     end
 
     # grab fb_token to access Facebook for user data

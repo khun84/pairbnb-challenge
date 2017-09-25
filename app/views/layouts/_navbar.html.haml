@@ -19,7 +19,15 @@
             - if current_user
                 %li#user-avatar.nav-item
                     %img.rounded-circle{src: current_user.avatar}
-                %li#user-link.nav-item
-                    = link_to current_user.name, user_path(current_user), class:'nav-link'
+                %li.dropdown.nav-item
+                    %a.dropdown-toggle.nav-link{href: '#', "data-toggle":"dropdown"}
+                        = current_user.name
+                    .dropdown-menu
+                        = link_to 'Profile', user_path(current_user), class: 'dropdown-item'
+                        .dropdown-divider
+                        = link_to 'Listings', user_listings_path(current_user), class: 'dropdown-item'
+                        = link_to 'Reservations', reservations_path, class: 'dropdown-item'
+                -#%li#user-link.nav-item
+                -#    = link_to current_user.name, user_path(current_user), class:'nav-link'
                 %li.nav-item
                     = link_to 'Sign out', sign_out_path, method: :delete, class:'nav-link'

@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
     # let the url become nil if want to return boolean
     def resource_exist?(url: redirect_default_path, resource: nil, resource_id: params[:id],msg: default_msg)
-        is_exist = !resource.find(resource_id).nil?
+        is_exist = resource.where(id: resource_id).exists?
 
         if url.nil?
             # return boolean if url is not given

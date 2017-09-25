@@ -47,6 +47,11 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick" # for image resizing
 gem 'fog'
+# use Date picker
+gem 'flatpickr'
+gem 'flatpickr_rails'
+# use Rest client
+gem 'rest-client'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

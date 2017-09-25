@@ -21,6 +21,13 @@ class UsersController < Clearance::UsersController
 
     def show
         @user = User.find(params[:id])
+        if @user.reservations.exists?
+            @days_to_check_in = (Date.today - @user.reservations.check_in_from_today.first.check_in).to_i
+        end
+
+        if @user.get_listings_reservations.check_in_from_today.exists?
+            @days_to_guest_check_in = (Date.today - @user.get_listings_reservations.check_in_from_today.first.check_in).to_i
+        end
         @listings = @user.listings.order('updated_at DESC').paginate(page: params[:page], per_page: 3)
         @avoid_footer = 'avoid-footer'
         render 'show'

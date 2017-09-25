@@ -1,0 +1,70 @@
+.row
+    .col-md-6
+        .row
+            .col-4
+                %label
+                    Property name:
+            .col-8
+                %a{href: listing_path(reservation.listing_id)}
+                    %p
+                        = reservation.listing.name
+        .row
+            .col-4
+                %label
+                    Location:
+            .col-8
+                %p
+                    = reservation.listing.location.city + ', ' + reservation.listing.location.state
+        .row
+            .col-4
+                %label
+                    Booked on:
+            .col-8
+                %p
+                    = reservation.created_at
+        .row
+            .col-4
+                %label
+                    Check in:
+            .col-8
+                %p.font-weight-bold
+                    = reservation.check_in
+        .row
+            .col-4
+                %label
+                    Check out:
+            .col-8
+                %p.font-weight-bold
+                    = reservation.check_out
+        .row
+            .col-4
+                %label
+                    Days of stay:
+            .col-8
+                %p
+                    = reservation.days
+        .row
+            .col-4
+                %label
+                    Number of guests:
+            .col-8
+                %p
+                    = reservation.num_of_guests
+        .row
+            .col-4
+                %label
+                    Price:
+            .col-8
+                %p
+                    = reservation.price
+%hr
+
+
+
+
+
+
+
+
+
+
