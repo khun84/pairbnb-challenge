@@ -3,7 +3,7 @@ class Reservation < ApplicationRecord
     belongs_to :user
     before_save :set_days_of_stay, :set_price, on: :create
 
-    validate :validate_date, :validate_availability, :validate_should_not_book_by
+    validate :validate_date, :validate_availability, :validate_should_not_book_by, :validate_num_of_guests
     enum status: [:pending, :confirmed]
 
     def self.show_host_reservations(host_id)
@@ -59,6 +59,10 @@ class Reservation < ApplicationRecord
         end
     end
 
-
+    def validate_num_of_guests
+        if !(self.num_of_guests >=1 and self.num_of_guests <= self.listing.person_count)
+            errors.add(:num_of_guests, 'Please select the correct number of guests!')
+        end
+    end
 
 end
