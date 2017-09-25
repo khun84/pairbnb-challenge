@@ -48,6 +48,19 @@ class ReservationsController < ApplicationController
     end
 
     def create
+        assign_param = reservation_params
+        assign_param[:check_in] = Date.strptime(assign_param[:check_in], '%Y-%m-%d')
+        assign_param[:check_out] = Date.strptime(assign_param[:check_out], '%Y-%m-%d')
+        assign_param[:user_id] = current_user.id
+        reservation = Reservation.new(assign_param)
+
+        # assign_param[:days] = (assign_param[:check_out] - assign_param[:check_in]).to_i
+        # assign_param[:user_id] = current_user.id
+        if !reservation.save
+            flash[:notice] = reservation.errors.messages
+        end
+
+        redirect_to listing_path(params[:listing_id])
 
     end
 
@@ -61,6 +74,12 @@ class ReservationsController < ApplicationController
 
     def destroy
 
+    end
+
+    private
+
+    def reservation_params
+        params.require(:reservation).permit([:listing_id,:user_id, :check_in, :check_out, :num_of_guests])
     end
 
 end

@@ -81,3 +81,16 @@
                     .row{class: - "#{line_through_class(@listing.smoke)} mx-0"}
                         = "Smoking allowed"
 
+= form_for Reservation.new, url: "/listings/#{@listing.id}/reservations", method: :create do |f|
+    = f.label :check_in
+    = f.text_field :check_in, class: "calendar-input"
+    = f.label :check_out
+    = f.text_field :check_out, class: "calendar-input"
+    = f.label :num_of_guests
+    = f.number_field :num_of_guests
+    = f.hidden_field :listing_id, value: @listing.id
+    -#= hidden_field_tag 'base_price', @listing.base_price
+    -#= f.label :price
+    -#= f.number_field :price, value: @listing.base_price, disabled: true
+    = f.submit 'Book'
+
