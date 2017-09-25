@@ -3,20 +3,20 @@ class Reservation < ApplicationRecord
     belongs_to :user
     before_save :set_days_of_stay, :set_price, on: :create
 
-    validate :validate_date, :validate_availability
+    validate :validate_date, :validate_availability, :validate_should_not_book_by
     enum status: [:pending, :confirmed]
 
     def self.show_host_reservations(host_id)
-        listings_belong_host = User.find(host_id).listings.pluck(:id)
-        where('listing_id in (?)', listings_belong_host)
+        listings_belong_to_host = User.find(host_id).listings.pluck(:id)
+        where('listing_id in (?)', listings_belong_to_host).order('check_in')
     end
 
     def self.check_in_from_today
-        where('check_in >= ?', Date.today)
+        where('check_in >= ?', Date.today).order('check_in')
     end
 
     def self.check_out_from_today
-        where('check_out >= ?', Date.today)
+        where('check_out >= ?', Date.today).order('check_in')
     end
 
     def self.check_in_today
@@ -25,7 +25,6 @@ class Reservation < ApplicationRecord
 
     def self.check_out_today
         where('check_out = ?', Date.today)
-
     end
 
     private
@@ -52,7 +51,13 @@ class Reservation < ApplicationRecord
         end
     end
 
-
+    def validate_should_not_book_by
+        if self.user.moderator?
+            errors.add(:user_id, 'Moderators are not allowed to make booking.')
+        elsif self.listing.user_id == self.user_id
+            errors.add(:user_id, 'The host are not allowed to book his/her own listings')
+        end
+    end
 
 
 

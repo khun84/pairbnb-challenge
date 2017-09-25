@@ -2,24 +2,14 @@
     %h1.display-3
         = "Hello, #{@user.name}"
     %p.lead
-        Your next trip is # days ahead of now
+        - if @days_to_check_in
+            = "Your next trip is #{@days_to_check_in} days from today! Get ready for the trip!"
+        - else
+            = "You don't have any reservation. Plan for your next travel now!"
     %hr.my-4.jumbotron-seperator
     %p.lead
-        You have # reservation
+        - if @days_to_guest_check_in
+            = "You have guest check in in #{@days_to_guest_check_in} from today!"
+        - else
+            = "You don't have any reservation coming forward."
     = button_to 'Edit profile', edit_user_path(current_user.id), method: :get, class: "btn btn-primary", role: "button"
-.row
-    .col-sm-2
-        = button_to 'New listing', new_user_listing_path(current_user), method: :get, class: 'btn btn-primary', role: 'button'
-
-= render partial: 'listings/listing_cards'
-
--#
--#<div class="jumbotron">
--#    <h1 class="display-3">Hello, world!</h1>
--#    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
--#    <hr class="my-4">
--#    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
--#    <p class="lead">
--#        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
--#    </p>
--#</div>

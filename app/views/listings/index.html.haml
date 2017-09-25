@@ -1,1 +1,11 @@
+- @is_host ||= false
+
+- if @is_host
+    %h2.row.lead
+        = "Showing your listings..."
+    .row
+        .col-sm-2.p-0
+            %a.btn.btn-primary{href:new_user_listing_path(current_user), role: 'button'}
+                New listing
+%hr
 = render partial: 'listings/listing_cards'

@@ -7,9 +7,16 @@ module ListingsHelper
         end
 
         if current_user.customer?
-            return Listing.where('verified = ?', true).order('updated_at desc').paginate(page:params[:page], per_page: 3)
+            if params.keys.include? 'user_id'
+            #     populate listings for host
+                return current_user.listings.order('updated_at desc').paginate(page:params[:page], per_page: 3)
+            else
+            #     populate listings for travel
+                return Listing.verified.order('updated_at desc').paginate(page:params[:page], per_page: 3)
+            end
         else
-            return Listing.all.paginate(page:params[:page], per_page: 3)
+            # listings for moderator
+            return Listing.not_verified.paginate(page:params[:page], per_page: 3)
         end
 
     end

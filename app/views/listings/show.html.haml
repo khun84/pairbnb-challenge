@@ -26,11 +26,14 @@
         .col-sm-8
             .row
                 - if current_user.id == @listing.user_id or current_user.moderator?
-                    .col-sm-4.col-lg-2.col-6
+                    .col-sm-4.col-lg-3.col-4.p-1
                         = button_to 'Edit', edit_user_listing_path(current_user, @listing), method: :get,
                         form_class: 'form-inline',class: "btn btn-primary w-100", role: 'button'
                 - if current_user.id == @listing.user_id
-                    .col-sm-4.col-lg-2.col-6
+                    .col-sm-4.col-lg-3.col-4.p-1
+                        = link_to 'Reservations', listing_reservations_path(@listing),
+                        class: 'btn btn-primary w-100', role: 'button'
+                    .col-sm-4.col-lg-3.col-4.p-1
                         = button_to 'Remove', delete_user_listing_path(@listing), method: :delete,
                          form_class: 'form-inline', class: 'btn btn-danger w-100',
                          role:'button', data:{confirm:'Do you want to remove this listing?'}
@@ -81,16 +84,10 @@
                     .row{class: - "#{line_through_class(@listing.smoke)} mx-0"}
                         = "Smoking allowed"
 
-= form_for Reservation.new, url: "/listings/#{@listing.id}/reservations", method: :create do |f|
-    = f.label :check_in
-    = f.text_field :check_in, class: "calendar-input"
-    = f.label :check_out
-    = f.text_field :check_out, class: "calendar-input"
-    = f.label :num_of_guests
-    = f.number_field :num_of_guests
-    = f.hidden_field :listing_id, value: @listing.id
-    -#= hidden_field_tag 'base_price', @listing.base_price
-    -#= f.label :price
-    -#= f.number_field :price, value: @listing.base_price, disabled: true
-    = f.submit 'Book'
+-# show the reservation booking form
+- if @listing.user_id != current_user.id
+    = render partial: 'reservations/new'
+
+
+
 

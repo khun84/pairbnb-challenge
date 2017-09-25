@@ -19,14 +19,11 @@
 //= require flatpickr
 //= require_tree .
 
-
 $(document).ready(function () {
     flatpickr('#reservation_check_in', {
         minDate: 'today'
     });
-});
 
-$(document).ready(function () {
     flatpickr('#reservation_check_out', {
         minDate: new Date().fp_incr(1)
     });
