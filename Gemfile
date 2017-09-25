@@ -50,6 +50,8 @@ gem 'fog'
 # use Date picker
 gem 'flatpickr'
 gem 'flatpickr_rails'
+# use Rest client
+gem 'rest-client'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
