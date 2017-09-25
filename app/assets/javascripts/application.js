@@ -16,4 +16,13 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require flatpickr
 //= require_tree .
+
+
+$(document).ready(function () {
+    flatpickr('#flatpicker', {
+        mode: 'range',
+        inline: true
+    });
+});

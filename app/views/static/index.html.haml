@@ -2,9 +2,12 @@
     %div.display-3.mb-sm-5 Pair BnB
     %div.lead.mb-sm-3 A place to find your next home
 
-    %button.btn.btn-primary.btn-lg.w-25.text-center{type:'button', "data-toggle":'modal',
-    "data-target":'#login-alert-modal'}
-        %i.fa.fa-calendar-check-0.mr-sm-1{'aria-hidden':'true'}
-        Book Now!
+    -#%button.btn.btn-primary.btn-lg.w-25.text-center{type:'button', "data-toggle":'modal',
+    -#"data-target":'#login-alert-modal'}
+    -#    %i.fa.fa-calendar-check-0.mr-sm-1{'aria-hidden':'true'}
+    -#    Book Now!
+
+    %p#check-in-calendar.btn.btn-primary.btn-lg.w-25.text-center
+        Calendar
 
 = render partial: 'listings/listing_cards'

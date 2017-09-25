@@ -89,6 +89,9 @@ GEM
       thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
+    flatpickr (2.6.3.0)
+    flatpickr_rails (1.1.0)
+      railties (>= 3.0)
     fog (1.41.0)
       fog-aliyun (>= 0.1.0)
       fog-atmos
@@ -393,6 +396,8 @@ DEPENDENCIES
   clearance
   coffee-rails (~> 4.2)
   figaro
+  flatpickr
+  flatpickr_rails
   fog
   haml
   jbuilder (~> 2.5)
