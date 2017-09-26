@@ -3,7 +3,7 @@ module ListingsHelper
     # CONTROLLER HELPER METHOD
     def listings_by_role
         if !signed_in?
-            return Listing.where('verified = ?', true).order('updated_at desc').paginate(page:params[:page], per_page: 3)
+            return Listing.verified.order('updated_at desc').paginate(page:params[:page], per_page: 3)
         end
 
         if current_user.customer?

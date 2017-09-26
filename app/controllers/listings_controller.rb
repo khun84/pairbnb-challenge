@@ -1,11 +1,11 @@
 class ListingsController < ApplicationController
     include ListingsHelper
 
-    before_action(except: [:show, :index]) do
+    before_action(except: [:show, :index, :search]) do
         not_sign_in_redirect url: listings_path, msg: 'Please sign in to perform this action'
     end
 
-    before_action(except: [:index, :new, :create]) do
+    before_action(except: [:index, :new, :create, :search]) do
         resource_exist? url: listings_path, resource: Listing, resource_id: params[:id], msg: 'There is no such listing'
     end
 
@@ -56,11 +56,25 @@ class ListingsController < ApplicationController
         @listing = Listing.includes(:location).find(params[:id])
     end
 
+    def search
+        @permitted_params = listings_search_params.to_h
+
+        if @permitted_params["check_in"].blank? or @permitted_params["check_out"].blank?
+            @listings = listings_by_role
+            flash[:notice] = ['Please key in appropriate to search for listings.']
+        else
+            @listings = Listing.search_by(param: @permitted_params).paginate(page:params[:page], per_page: 3)
+        end
+
+        return render 'listings/index'
+
+
+    end
+
     def edit
         @listing = current_user.listings.find(params[:id])
         # todo what if the listing has been deleted
         @locations = Location.all
-
     end
 
     def edit_by_moderator
@@ -99,11 +113,19 @@ class ListingsController < ApplicationController
 
     private
 
+    def supported_search_param
+        ['city', 'check_in', 'check_out']
+    end
+
     def listing_params
         params.require(:listing).permit([:name, :location_id, :person_count, :base_price, :smoke, :pet, :user_id, :room_count, {images:[]}])
     end
 
     def moderator_params
         params.require(:listing).permit([:verified])
+    end
+
+    def listings_search_params
+        params.permit(:city, :check_in, :check_out)
     end
 end

@@ -1,0 +1,13 @@
+- @permitted_params||={}
+.row
+    .col-md-8
+        = form_tag({controller: 'listings', action: 'search'}, method: 'get', class: 'form-row col-md-12') do
+            .col-md-3
+                = text_field_tag 'city', nil, placeholder: 'city', value: @permitted_params.fetch("city", ''), class: 'form-control'
+            .col-md-3
+                = text_field_tag 'check_in', nil, id:'reservation_check_in', value: @permitted_params.fetch('check_in', ''), class: 'form-control'
+            .col-md-3
+                = text_field_tag 'check_out', nil, id:'reservation_check_out', value: @permitted_params.fetch('check_out', ''), class: 'form-control'
+            .col-md-3
+                %button{class: 'btn btn-primary w-100', type: 'submit', role: 'button'} Search
+                -#= submit_tag 'Submit', class: 'btn btn-primary w-100', role: 'button'
