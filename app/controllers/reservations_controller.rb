@@ -111,12 +111,13 @@ class ReservationsController < ApplicationController
 
     end
 
-    def send_email
-        UserMailer.reservation_confirmation(Reservation.last).deliver_now
-        @reservation = Reservation.last
-        @listing = @reservation.listing
-        render 'email_report'
-    end
+    # action for email testing
+    # def send_email
+    #     reservation_id = 22
+    #     ReservationJob.set(wait: 1.minute).perform_later reservation_id
+    #     @listing = Reservation.find(22).listing
+    #     render 'email_report'
+    # end
 
     private
 

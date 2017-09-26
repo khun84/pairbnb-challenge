@@ -54,6 +54,10 @@ gem 'flatpickr_rails'
 gem 'rest-client'
 # use Braintree for payment
 gem 'braintree'
+# use Sidekiq for background email job
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

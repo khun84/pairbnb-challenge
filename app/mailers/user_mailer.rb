@@ -6,8 +6,8 @@ class UserMailer < ApplicationMailer
     #
     #   en.user_mailer.reservation_confirmation.subject
     #
-    def reservation_confirmation(reservation)
-        @reservation = reservation
+    def reservation_confirmation(reservation_id)
+        @reservation = Reservation.find(reservation_id)
         # change this to guest email
         email = 'khun84@gmail.com'
         mail to: email, subject: "Pairbnb: Reservation confirmation"
