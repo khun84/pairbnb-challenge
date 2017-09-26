@@ -25,6 +25,7 @@ class PaymentsController < ApplicationController
         )
 
         if result.success?
+            UserMailer.reservation_confirmation(reservation).deliver_now
             redirect_to reservations_path, :flash => { :notice => "Transaction successful!" }
         else
             # todo handle payment failure
