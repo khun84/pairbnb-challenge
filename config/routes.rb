@@ -29,7 +29,9 @@ Rails.application.routes.draw do
     # reservations resources
     post '/reservations/:reservation_id/payments' => 'payments#checkout', as: :reservation_check_out
 
-    get '/reservations/email' => 'reservations#send_email', as: :reservation_email
+    # this path for email testing only
+    # get '/reservations/email' => 'reservations#send_email', as: :reservation_email
+
     resources :reservations do
         resources :payments
     end
