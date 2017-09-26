@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
     resources :passwords, controller: "clearance/passwords", only: [:create, :new]
     resource :session, controller: "sessions", only: [:create]
@@ -38,7 +39,6 @@ Rails.application.routes.draw do
 
     delete '/users/:user_id/listings/:id' => 'listings#destroy', as: :delete_user_listing
 
-    # reservations resources
 
     root 'static#index'
 
@@ -49,7 +49,8 @@ Rails.application.routes.draw do
     get "/auth/:provider/callback" => "sessions#create_from_omniauth"
     ####### AUTHENTICATION END
 
-    get '/test' => 'test#test', as: 'testing'
 
+
+    mount Sidekiq::Web, at: "/sidekiq"
 
 end

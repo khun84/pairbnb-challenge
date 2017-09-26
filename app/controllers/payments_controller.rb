@@ -16,6 +16,7 @@ class PaymentsController < ApplicationController
 
         nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
 
+        # submit payment process request to braintree
         result = Braintree::Transaction.sale(
                 :amount => reservation.price,
                 :payment_method_nonce => nonce_from_the_client,
@@ -25,7 +26,8 @@ class PaymentsController < ApplicationController
         )
 
         if result.success?
-            UserMailer.reservation_confirmation(reservation).deliver_now
+            # UserMailer.reservation_confirmation(reservation_id).deliver_later
+            ReservationJob.set(wait: 1.minute).perform_later reservation.id
             redirect_to reservations_path, :flash => { :notice => "Transaction successful!" }
         else
             # todo handle payment failure
