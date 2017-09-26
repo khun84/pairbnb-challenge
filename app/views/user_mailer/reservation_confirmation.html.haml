@@ -1,9 +1,11 @@
+%h1
+    = "Welcome Onboard #{@reservation.user.name} !"
 %p
-    = "Hi #{@reservation.user.name}"
-%br
+    = "You have successfully booked #{@reservation.listing.name}"
 %p
-            Thanks for your booking.
-%br
+    = "Check in: #{@reservation.check_in.strftime('%Y-%m-%d')}, 2.00PM"
 %p
-    Best regards
-    Pairbnb
+    = "Check in: #{@reservation.check_out.strftime('%Y-%m-%d')}, 12.00PM"
+%br/
+%p Thanks for joining and have a great day!
+

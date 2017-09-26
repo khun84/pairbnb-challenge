@@ -111,6 +111,13 @@ class ReservationsController < ApplicationController
 
     end
 
+    def send_email
+        UserMailer.reservation_confirmation(Reservation.last).deliver_now
+        @reservation = Reservation.last
+        @listing = @reservation.listing
+        render 'email_report'
+    end
+
     private
 
     def reservation_params

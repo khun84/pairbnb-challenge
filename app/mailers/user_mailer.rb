@@ -8,8 +8,8 @@ class UserMailer < ApplicationMailer
     #
     def reservation_confirmation(reservation)
         @reservation = reservation
-        @greeting = "Hi"
-
-        mail to: "khun84@gmail.com", subject: "Reservation confirmation"
+        # change this to guest email
+        email = 'khun84@gmail.com'
+        mail to: email, subject: "Pairbnb: Reservation confirmation"
     end
 end
