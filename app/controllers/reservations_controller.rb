@@ -90,7 +90,7 @@ class ReservationsController < ApplicationController
         # assign_param[:days] = (assign_param[:check_out] - assign_param[:check_in]).to_i
         # assign_param[:user_id] = current_user.id
         if reservation.save
-            redirect_to reservations_path
+            redirect_to new_reservation_payment_path(reservation.id)
         else
             flash[:notice] = reservation.errors.messages
             redirect_to listing_path(params[:listing_id])

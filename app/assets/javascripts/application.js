@@ -27,4 +27,12 @@ $(document).ready(function () {
     flatpickr('#reservation_check_out', {
         minDate: new Date().fp_incr(1)
     });
+
+    $('#reservation_check_in').change(function () {
+        var check_in_date = Date.parse($(this).val());
+        flatpickr('#reservation_check_out'), {
+            minDate: new Date(check_in_date).fp_incr(1)
+        }
+    })
+
 });

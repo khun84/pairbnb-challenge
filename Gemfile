@@ -52,6 +52,8 @@ gem 'flatpickr'
 gem 'flatpickr_rails'
 # use Rest client
 gem 'rest-client'
+# use Braintree for payment
+gem 'braintree'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
