@@ -1,9 +1,9 @@
 class Reservation < ApplicationRecord
     belongs_to :listing
     belongs_to :user
-    before_save :set_days_of_stay, :set_price, on: :create
+    before_save :set_days_of_stay, :set_price, :set_status, on: :create
 
-    validate :validate_date, :validate_availability, :validate_should_not_book_by, :validate_num_of_guests
+    validate :validate_date, :validate_availability, :validate_should_not_book_by, :validate_num_of_guests, on: :create
     enum status: [:pending, :confirmed]
 
     def self.show_host_reservations(host_id)
@@ -27,9 +27,28 @@ class Reservation < ApplicationRecord
         where('check_out = ?', Date.today)
     end
 
+    def self.confirmed
+        where('status = ?', 1)
+    end
 
+    def self.pending
+        where('status = ?', 0)
+    end
+
+    def available_to_book?
+        sql_string = "listing_id = ? and not (check_in >= ? or check_out <= ?)"
+        if Reservation.confirmed.where(sql_string, self.listing_id, self.check_out, self.check_in).exists?
+            false
+        else
+            true
+        end
+    end
 
     private
+
+    def set_status
+        self.status = 'pending'
+    end
 
     def set_days_of_stay
         self.days = (self.check_out - self.check_in).to_i
@@ -47,8 +66,7 @@ class Reservation < ApplicationRecord
     end
 
     def validate_availability
-        sql_string = "listing_id = ? and not (check_in >= ? or check_out <= ?)"
-        if Reservation.where(sql_string, self.listing_id, self.check_out, self.check_in).exists?
+        if !available_to_book?
             errors.add(:check_in, "the dates that you wish to book are not available. Please try other dates.")
         end
     end

@@ -25,8 +25,13 @@ Rails.application.routes.draw do
     end
 
 
+
     # reservations resources
-    resources :reservations
+    post '/reservations/:reservation_id/payments' => 'payments#checkout', as: :reservation_check_out
+
+    resources :reservations do
+        resources :payments
+    end
 
     delete '/users/:user_id/listings/:id' => 'listings#destroy', as: :delete_user_listing
 

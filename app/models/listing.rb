@@ -16,11 +16,10 @@ class Listing < ApplicationRecord
     def self.search_by(param:{})
         city = param.fetch('city', '')
 
-
-
         check_in = param.fetch('check_in',Date.new(1980, 1 ,1))
         check_out = param.fetch('check_out', Date.new(1980, 1, 1))
 
+        # swap check in and check out date
         if check_in > check_out
             temp = check_in
             check_in = check_out
@@ -28,6 +27,7 @@ class Listing < ApplicationRecord
         end
 
         reserved_listings_id =  self.get_reserved_listings_id(check_in, check_out)
+
         if reserved_listings_id.blank?
             # return id as -1 so that any listings would fulfil this criteria
             reserved_listings_id = [-1]

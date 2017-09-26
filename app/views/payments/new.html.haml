@@ -1,0 +1,92 @@
+.payment-form#payment-form
+    .lead.amount
+        = "Payment amount: #{@reservation.price}"
+    = form_for :checkout_form, url: reservation_check_out_path(@reservation.id), html: { id: 'cardForm' } do |f|
+        = f.label :card_number, 'Credit Card Number', class: 'hosted-fields--label'
+        #card-number.hosted-field
+
+        = f.label :expiration_date, 'Expiration Date', class: 'hosted-fields--label'
+        #expiration-date.hosted-field
+
+        = f.label :cvv, 'CVV', class: 'hosted-fields--label'
+        #cvv.hosted-field
+
+        = f.hidden_field 'payment_method_nonce'
+        .row
+            .col-md-3
+                .button-container
+                    = f.submit 'Pay', disabled: true, class: 'btn btn-primary w-100', id: 'submit-payment-btn'
+
+%script{src: "https://js.braintreegateway.com/web/3.22.2/js/client.js"}
+%script{src: "https://js.braintreegateway.com/web/3.22.2/js/hosted-fields.js"}
+
+:javascript
+    var form = document.querySelector('#cardForm');
+    var submit = document.querySelector('#submit-payment-btn');
+
+    braintree.client.create({
+        authorization: '#{@client_token}'
+    }, function (clientErr, clientInstance) {
+        if (clientErr) {
+            console.error(clientErr);
+            return;
+        }
+
+        // This example shows Hosted Fields, but you can also use this
+        // client instance to create additional components here, such as
+        // PayPal or Data Collector.
+
+        braintree.hostedFields.create({
+            client: clientInstance,
+            styles: {
+                'input': {
+                    'font-size': '14px'
+                },
+                'input.invalid': {
+                    'color': 'red'
+                },
+                'input.valid': {
+                    'color': 'green'
+                }
+            },
+            fields: {
+                number: {
+                    selector: '#card-number',
+                    placeholder: '4111 1111 1111 1111'
+                },
+                cvv: {
+                    selector: '#cvv',
+                    placeholder: '123'
+                },
+                expirationDate: {
+                    selector: '#expiration-date',
+                    placeholder: '10/2019'
+                }
+            }
+        }, function (hostedFieldsErr, hostedFieldsInstance) {
+            if (hostedFieldsErr) {
+                console.error(hostedFieldsErr);
+                return;
+            }
+
+            submit.removeAttribute('disabled');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+                    if (tokenizeErr) {
+                        console.error(tokenizeErr);
+                        return;
+                    }
+                    document.querySelector('input[name="checkout_form[payment_method_nonce]"]').value = payload.nonce;
+                    // If this was a real integration, this is where you would
+                    // send the nonce to your server.
+                    console.log('Got a nonce: ' + payload.nonce);
+
+                    form.submit();
+                });
+            }, false);
+        });
+    });
+
