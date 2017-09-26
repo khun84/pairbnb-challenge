@@ -7,5 +7,7 @@
         .col-sm-2.p-0
             %a.btn.btn-primary{href:new_user_listing_path(current_user), role: 'button'}
                 New listing
+- else
+    = render partial: 'listings/search_form'
 %hr
 = render partial: 'listings/listing_cards'

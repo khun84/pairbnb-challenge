@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
 
 
+    get '/listings/search' => 'listings#search', as: :search_listings
 
     # listings resources
     resources :listings, only: [:index, :show] do
@@ -20,9 +21,9 @@ Rails.application.routes.draw do
         member do
             get 'verify/edit' => 'listings#edit_by_moderator', as: :edit_by_moderator
             # patch 'verify' => 'listings#update_verified', as: :update_verify
-
         end
     end
+
 
     # reservations resources
     resources :reservations

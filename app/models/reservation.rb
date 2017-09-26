@@ -27,6 +27,8 @@ class Reservation < ApplicationRecord
         where('check_out = ?', Date.today)
     end
 
+
+
     private
 
     def set_days_of_stay
