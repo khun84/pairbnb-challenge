@@ -1,2 +1,2 @@
-web: bundle exec puma server -p $PORT
+web: bundle exec puma -p $PORT -e production
 worker: bundle exec sidekiq -q default -q mailers
