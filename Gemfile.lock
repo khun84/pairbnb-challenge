@@ -434,6 +434,7 @@ DEPENDENCIES
   flatpickr
   flatpickr_rails
   fog
+  fog-aws
   haml
   jbuilder (~> 2.5)
   jquery-rails

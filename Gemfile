@@ -47,6 +47,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick" # for image resizing
 gem 'fog'
+gem 'fog-aws'
 # use Date picker
 gem 'flatpickr'
 gem 'flatpickr_rails'
@@ -56,7 +57,7 @@ gem 'rest-client'
 gem 'braintree'
 # use Sidekiq for background email job
 gem 'sidekiq'
-gem 'sinatra', require: false
+gem 'sinatra', require: false # for the job dashboard
 gem 'slim'
 
 # Use Capistrano for deployment
