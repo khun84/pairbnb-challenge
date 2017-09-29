@@ -85,5 +85,15 @@ group :production do
     # gem 'rails_12factor'
 end
 
+
+group :development, :production do
+    gem "rspec-given"
+    gem 'shoulda-matchers'
+    gem 'rspec-rails'
+    gem 'factory_girl_rails'
+    gem 'guard-rspec'
+    gem 'rb-fsevent'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
