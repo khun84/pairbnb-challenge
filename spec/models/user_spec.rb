@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model, focus: true do
+RSpec.describe User, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
     describe 'create new user' do
         describe 'normal sign up' do
@@ -12,6 +12,5 @@ RSpec.describe User, type: :model, focus: true do
                 end
             end
         end
-
     end
 end

@@ -1,7 +1,7 @@
 class Reservation < ApplicationRecord
     belongs_to :listing
     belongs_to :user
-    before_save :set_days_of_stay, :set_price, :set_status, on: :create
+    before_create :set_days_of_stay, :set_price, :set_status, on: :create
 
     validate :validate_date, :validate_availability, :validate_should_not_book_by, :validate_num_of_guests, on: :create
     enum status: [:pending, :confirmed]

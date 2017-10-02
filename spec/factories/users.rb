@@ -7,4 +7,14 @@ FactoryGirl.define do
         role 'customer'
         password 'password'
     end
+
+    factory :user_moderator do
+        email 'moderator@gmail.com'
+        name 'moderator'
+        country 'Malaysia'
+        state 'Perak'
+        role 'moderator'
+        password 'password'
+    end
+
 end
