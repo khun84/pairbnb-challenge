@@ -1,0 +1,4 @@
+example_id                             | status  | run_time        |
+-------------------------------------- | ------- | --------------- |
+./spec/models/reservation_spec.rb[1:1] | unknown |                 |
+./spec/models/user_spec.rb[1:1:1:1:1]  | passed  | 0.11626 seconds |
